@@ -12,7 +12,7 @@ EspMQTTClient client(
 
 
 // GPIO where the DS18B20 is connected to
-OneWire oneWire(5);         
+OneWire oneWire(4);         
 // Pass our oneWire reference to Dallas Temperature sensor 
 DallasTemperature sensors(&oneWire);
 // Temperature value
@@ -32,7 +32,7 @@ void setup() {
   client.enableLastWillMessage("TestClient/lastwill", "Offline");
 }
 
-void lerDados() {
+void lerEnviarDados() {
   
   sensors.requestTemperatures();
   temp = sensors.getTempCByIndex(0);
@@ -51,7 +51,7 @@ void onConnectionEstablished()
   });
 
 
-  lerDados();
+  lerEnviarDados();
 }
 
 void loop() {
